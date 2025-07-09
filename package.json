@@ -1,0 +1,109 @@
+{
+  "name": "@cloud-copilot/job",
+  "version": "0.1.0",
+  "description": "Async job runners with defined worker pools",
+  "keywords": [
+    "Typescript",
+    "Jobs",
+    "Workers"
+  ],
+  "homepage": "https://github.com/cloud-copilot/job#readme",
+  "bugs": {
+    "url": "https://github.com/cloud-copilot/job/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloud-copilot/job.git"
+  },
+  "license": "MIT",
+  "author": "David Kerber <dave@cloudcopilot.io>",
+  "main": "dist/esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "types": "dist/cjs/index.d.ts",
+  "scripts": {
+    "build": "npx tsc -p tsconfig.cjs.json && npx tsc -p tsconfig.esm.json && ./postbuild.sh",
+    "clean": "rm -rf dist",
+    "test": "npx vitest --run --coverage",
+    "release": "npm install && npm run clean && npm run build && npm test && npm run format-check && npm publish",
+    "format": "npx prettier --write src/",
+    "format-check": "npx prettier --check src/"
+  },
+  "devDependencies": {
+    "@cloud-copilot/prettier-config": "^0.1.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@types/node": "^22.5.0",
+    "@vitest/coverage-v8": "^3.0.7",
+    "semantic-release": "^24.2.1",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.7"
+  },
+  "prettier": "@cloud-copilot/prettier-config",
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "releaseRules": [
+            {
+              "type": "feat",
+              "release": "patch"
+            },
+            {
+              "type": "fix",
+              "release": "patch"
+            },
+            {
+              "breaking": true,
+              "release": "patch"
+            },
+            {
+              "type": "*",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": true
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "package-lock.json",
+            "CHANGELOG.md"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]"
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": []
+        }
+      ]
+    ]
+  }
+}
