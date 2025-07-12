@@ -1,13 +1,13 @@
 import { Job, JobContext, JobResult, Logger } from './job.js'
 
 /**
- * Creates a queue that runs jobs concurrently up to a specified limit.
- * This will wait for jobs to be added to it and run them up the
+ * A queue that will run jobs concurrently using promises up to a specified limit.
+ * If no work is being done, it will wait for jobs to be added and run them up to the
  * maximum concurrency.
  *
- * Results are available via `getResults()`.
+ * Results are not stored in this queue, but are processed immediately via the `onComplete` callback.
+ *
  */
-
 export class StreamingJobQueue<T = void, P = Record<string, unknown>> {
   private queue: Job<T, P>[] = []
   private activeJobs = 0
@@ -127,7 +127,6 @@ export class StreamingJobQueue<T = void, P = Record<string, unknown>> {
    * Returns a promise that resolves when all queued work is complete
    */
   waitForIdle(): Promise<void> {
-    // log.debug('waitForIdle called', this.activeJobs, this.queue.length)
     return new Promise((resolve) => {
       if (this.activeJobs === 0 && this.queue.length === 0) {
         resolve()
@@ -141,7 +140,7 @@ export class StreamingJobQueue<T = void, P = Record<string, unknown>> {
    * Shutdown the queue - no new jobs will be accepted, but existing jobs will complete.
    *
    * Returns when a promise that resolves when all jobs have been processed and
-   * are available in `getResults()`.
+   * the onComplete callback has been called for each job.
    */
   async finishAllWork(): Promise<void> {
     this.isAcceptingWork = false

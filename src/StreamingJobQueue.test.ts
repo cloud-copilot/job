@@ -24,6 +24,8 @@ describe('StreamingJobQueue', () => {
     vi.useRealTimers()
   })
 
+  const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
   it('should process jobs and call onComplete for each result', async () => {
     const completedResults: JobResult<any, any>[] = []
     const onComplete = vi.fn(async (result) => {
@@ -267,6 +269,7 @@ describe('StreamingJobQueue', () => {
   })
 
   it('should handle finishAllWork correctly', async () => {
+    vi.useRealTimers()
     const completedResults: JobResult<any, any>[] = []
     const onComplete = vi.fn(async (result) => {
       completedResults.push(result)
@@ -274,8 +277,20 @@ describe('StreamingJobQueue', () => {
     const queue = new StreamingJobQueue<string, Record<string, unknown>>(2, mockLogger, onComplete)
 
     const jobs: Job<string>[] = [
-      { execute: async () => 'result1', properties: { id: 1 } },
-      { execute: async () => 'result2', properties: { id: 2 } }
+      {
+        execute: async () => {
+          await sleep(100)
+          return 'result1'
+        },
+        properties: { id: 1 }
+      },
+      {
+        execute: async () => {
+          await sleep(150)
+          return 'result2'
+        },
+        properties: { id: 2 }
+      }
     ]
 
     queue.enqueueAll(jobs)
