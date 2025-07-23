@@ -119,10 +119,13 @@ export class ConcurrentWorkerPool<T = void, P = Record<string, unknown>> {
 
     return new Promise<JobResult<T, P>>((resolve) => {
       const jobId = this.jobCounter++
-      ;(job as JobWithId<T, P>).concurrentJobId = jobId
+      const jobWithId: JobWithId<T, P> = {
+        ...job,
+        concurrentJobId: jobId
+      }
       this.resolveMap[jobId] = resolve
 
-      this.queue.push(job as JobWithId<T, P>)
+      this.queue.push(jobWithId)
       this.ensureWorkers()
       this.notifyWorkersOfNewWork()
     })
