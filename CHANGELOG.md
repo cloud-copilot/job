@@ -1,3 +1,10 @@
+## [0.1.5](https://github.com/cloud-copilot/job/compare/v0.1.4...v0.1.5) (2025-07-23)
+
+
+### Features
+
+* ConcurrentWorkerPool ([c7f0e45](https://github.com/cloud-copilot/job/commit/c7f0e45ea0e34cca31261f9d7e5316e41f9afc11))
+
 ## [0.1.4](https://github.com/cloud-copilot/job/compare/v0.1.3...v0.1.4) (2025-07-19)
 
 ## [0.1.3](https://github.com/cloud-copilot/job/compare/v0.1.2...v0.1.3) (2025-07-12)
