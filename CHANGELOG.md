@@ -1,3 +1,5 @@
+## [0.1.9](https://github.com/cloud-copilot/job/compare/v0.1.8...v0.1.9) (2025-08-16)
+
 ## [0.1.8](https://github.com/cloud-copilot/job/compare/v0.1.7...v0.1.8) (2025-08-09)
 
 ## [0.1.7](https://github.com/cloud-copilot/job/compare/v0.1.6...v0.1.7) (2025-08-03)
