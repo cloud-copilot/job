@@ -1,6 +1,6 @@
 {
   "name": "@cloud-copilot/job",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Async job runners with defined worker pools",
   "keywords": [
     "Typescript",
