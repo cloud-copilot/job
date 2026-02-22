@@ -1,4 +1,4 @@
-import { Job, JobContext, JobResult, Logger } from './job.js'
+import { type Job, type JobContext, type JobResult, type Logger } from './job.js'
 
 /**
  * Creates a queue that runs jobs concurrently up to a specified limit.
