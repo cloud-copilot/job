@@ -1,4 +1,4 @@
-import { Job, JobContext, JobResult, Logger } from './job.js'
+import { type Job, type JobContext, type JobResult, type Logger } from './job.js'
 
 /**
  * Runs the given jobs with up to `concurrency` tasks in flight at once.
