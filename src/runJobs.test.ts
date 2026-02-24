@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { Job, JobContext, Logger } from './job.js'
+import type { Job, JobContext, Logger } from './job.js'
 import { runJobs } from './runJobs.js'
 
 describe('runJobs', () => {
