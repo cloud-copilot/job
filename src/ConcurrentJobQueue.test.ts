@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { ConcurrentJobQueue } from './ConcurrentJobQueue.js'
-import { Job, JobContext, Logger } from './job.js'
+import type { Job, JobContext, Logger } from './job.js'
 
 describe('ConcurrentJobQueue', () => {
   let mockLogger: Logger
