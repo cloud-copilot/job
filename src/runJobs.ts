@@ -1,13 +1,19 @@
-import { type Job, type JobContext, type JobResult, type Logger } from './job.js'
+import { log as defaultLogger, type Logger } from '@cloud-copilot/log'
+import { type Job, type JobContext, type JobResult } from './job.js'
 
 /**
  * Runs the given jobs with up to `concurrency` tasks in flight at once.
  * Resolves with an array of results in the same order as the jobs.
+ *
+ * @param jobs - The jobs to run
+ * @param concurrency - The maximum number of jobs to run concurrently
+ * @param logger - Optional logger instance for long-running job warnings. Defaults to the module-level logger from @cloud-copilot/log.
+ * @returns An array of results in the same order as the jobs
  */
 export async function runJobs<T = void, P = Record<string, unknown>>(
   jobs: Job<T, P>[],
   concurrency: number,
-  logger: Logger
+  logger: Logger = defaultLogger
 ): Promise<JobResult<T, P>[]> {
   const results: JobResult<T, P>[] = []
   let nextIndex = 0

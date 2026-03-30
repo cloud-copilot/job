@@ -1,4 +1,5 @@
-import { type Job, type JobContext, type JobResult, type Logger } from './job.js'
+import { log as defaultLogger, type Logger } from '@cloud-copilot/log'
+import { type Job, type JobContext, type JobResult } from './job.js'
 
 interface JobWithId<T, P> extends Job<T, P> {
   concurrentJobId: number
@@ -28,11 +29,11 @@ export class ConcurrentWorkerPool<T = void, P = Record<string, unknown>> {
    * Create a new runner with the specified concurrency.
    *
    * @param concurrency - The maximum number of jobs to run concurrently.
-   * @param logger - Logger instance for logging long-running jobs.
+   * @param logger - Optional logger instance for long-running job warnings. Defaults to the module-level logger from @cloud-copilot/log.
    */
   constructor(
     private concurrency: number,
-    private logger: Logger
+    private logger: Logger = defaultLogger
   ) {}
 
   private async worker(workerId: number): Promise<void> {

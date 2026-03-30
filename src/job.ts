@@ -28,7 +28,3 @@ export interface Job<T = void, P = Record<string, unknown>> {
    */
   properties: P
 }
-
-export interface Logger {
-  warn: (...args: unknown[]) => void
-}

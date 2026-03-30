@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import type { Job, JobContext, JobResult, Logger } from './job.js'
+import type { Logger } from '@cloud-copilot/log'
+import type { Job, JobContext, JobResult } from './job.js'
 import { StreamingJobQueue } from './StreamingJobQueue.js'
 
 describe('StreamingJobQueue', () => {
@@ -10,7 +11,11 @@ describe('StreamingJobQueue', () => {
 
   beforeEach(() => {
     mockLogger = {
-      warn: vi.fn()
+      trace: vi.fn(),
+      debug: vi.fn(),
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn()
     }
     // completedResults = []
     // const onComplete = vi.fn(async (result) => {
