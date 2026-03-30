@@ -1,4 +1,5 @@
-import { type Job, type JobContext, type JobResult, type Logger } from './job.js'
+import { type Logger } from '@cloud-copilot/log'
+import { type Job, type JobContext, type JobResult } from './job.js'
 
 /**
  * A queue that will run jobs concurrently using promises up to a specified limit.
@@ -21,7 +22,7 @@ export class StreamingJobQueue<T = void, P = Record<string, unknown>> {
    * Create a new runner with the specified concurrency.
    *
    * @param concurrency - The maximum number of jobs to run concurrently.
-   * @param logger - Logger instance for logging long-running jobs.
+   * @param logger - Logger instance for long-running job warnings.
    * @param onComplete - Callback to handle job completion, receives the job result.
    */
   constructor(

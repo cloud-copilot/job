@@ -1,13 +1,18 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { ConcurrentJobQueue } from './ConcurrentJobQueue.js'
-import type { Job, JobContext, Logger } from './job.js'
+import type { Logger } from '@cloud-copilot/log'
+import type { Job, JobContext } from './job.js'
 
 describe('ConcurrentJobQueue', () => {
   let mockLogger: Logger
 
   beforeEach(() => {
     mockLogger = {
-      warn: vi.fn()
+      trace: vi.fn(),
+      debug: vi.fn(),
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn()
     }
     vi.clearAllTimers()
     vi.useFakeTimers()
