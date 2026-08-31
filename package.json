@@ -1,5 +1,5 @@
 {
-  "name": "@cloud-copilot/job",
+  "name": "@actsecurity/job",
   "version": "0.1.63",
   "description": "Async job runners with defined worker pools",
   "keywords": [
@@ -7,16 +7,16 @@
     "Jobs",
     "Workers"
   ],
-  "homepage": "https://github.com/cloud-copilot/job#readme",
+  "homepage": "https://github.com/act-security-labs/job#readme",
   "bugs": {
-    "url": "https://github.com/cloud-copilot/job/issues"
+    "url": "https://github.com/act-security-labs/job/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cloud-copilot/job.git"
+    "url": "git+https://github.com/act-security-labs/job.git"
   },
   "license": "MIT",
-  "author": "David Kerber <dave@cloudcopilot.io>",
+  "author": "Act Security",
   "main": "dist/esm/index.js",
   "exports": {
     ".": {
@@ -37,9 +37,10 @@
     "format-check": "npx prettier --check src/"
   },
   "devDependencies": {
-    "@cloud-copilot/prettier-config": "^0.1.0",
+    "@actsecurity/prettier-config": "^0.1.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^12.0.6",
     "@semantic-release/npm": "^13.1.4",
@@ -50,7 +51,7 @@
     "typescript": "^5.7.2",
     "vitest": "^4.0.18"
   },
-  "prettier": "@cloud-copilot/prettier-config",
+  "prettier": "@actsecurity/prettier-config",
   "release": {
     "branches": [
       "main"
@@ -85,6 +86,12 @@
         "@semantic-release/npm",
         {
           "npmPublish": true
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "successCmd": "echo published=true >> $GITHUB_OUTPUT && echo version=${nextRelease.version} >> $GITHUB_OUTPUT && echo package_name=$(node -p \"require('./package.json').name\") >> $GITHUB_OUTPUT"
         }
       ],
       [
