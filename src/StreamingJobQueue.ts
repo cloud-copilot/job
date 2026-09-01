@@ -1,4 +1,4 @@
-import { type Logger } from '@cloud-copilot/log'
+import { type Logger } from '@actsecurity/log'
 import { type Job, type JobContext, type JobResult } from './job.js'
 
 /**

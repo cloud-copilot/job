@@ -114,6 +114,6 @@
     ]
   },
   "dependencies": {
-    "@cloud-copilot/log": "^0.1.39"
+    "@actsecurity/log": "^0.1.60"
   }
 }
