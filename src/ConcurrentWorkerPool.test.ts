@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { ConcurrentWorkerPool } from './ConcurrentWorkerPool.js'
-import type { Logger } from '@cloud-copilot/log'
+import type { Logger } from '@actsecurity/log'
 import type { Job, JobContext } from './job.js'
 
 describe('ConcurrentWorkerPool', () => {

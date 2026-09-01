@@ -1,4 +1,4 @@
-import { log as defaultLogger, type Logger } from '@cloud-copilot/log'
+import { log as defaultLogger, type Logger } from '@actsecurity/log'
 import { type Job, type JobContext, type JobResult } from './job.js'
 
 interface JobWithId<T, P> extends Job<T, P> {
@@ -29,7 +29,7 @@ export class ConcurrentWorkerPool<T = void, P = Record<string, unknown>> {
    * Create a new runner with the specified concurrency.
    *
    * @param concurrency - The maximum number of jobs to run concurrently.
-   * @param logger - Optional logger instance for long-running job warnings. Defaults to the module-level logger from @cloud-copilot/log.
+   * @param logger - Optional logger instance for long-running job warnings. Defaults to the module-level logger from @actsecurity/log.
    */
   constructor(
     private concurrency: number,

@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import type { Logger } from '@cloud-copilot/log'
+import type { Logger } from '@actsecurity/log'
 import type { Job, JobContext } from './job.js'
 import { runJobs } from './runJobs.js'
 
