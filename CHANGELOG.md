@@ -1,3 +1,10 @@
+## [0.1.67](https://github.com/act-security-labs/job/compare/v0.1.66...v0.1.67) (2026-09-19)
+
+
+### Bug Fixes
+
+* use updated dependency updater action ([5dd4289](https://github.com/act-security-labs/job/commit/5dd4289efe0349fd6b05ce7944acb8a683e49842))
+
 ## [0.1.66](https://github.com/act-security-labs/job/compare/v0.1.65...v0.1.66) (2026-09-01)
 
 ## [0.1.65](https://github.com/act-security-labs/job/compare/v0.1.64...v0.1.65) (2026-09-01)
