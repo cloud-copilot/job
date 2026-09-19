@@ -1,3 +1,5 @@
+## [0.1.68](https://github.com/act-security-labs/job/compare/v0.1.67...v0.1.68) (2026-09-19)
+
 ## [0.1.67](https://github.com/act-security-labs/job/compare/v0.1.66...v0.1.67) (2026-09-19)
 
 
