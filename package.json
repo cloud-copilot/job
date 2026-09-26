@@ -1,6 +1,6 @@
 {
   "name": "@actsecurity/job",
-  "version": "0.1.68",
+  "version": "0.1.69",
   "description": "Async job runners with defined worker pools",
   "keywords": [
     "Typescript",
